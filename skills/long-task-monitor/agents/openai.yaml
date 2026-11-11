@@ -1,0 +1,4 @@
+interface:
+  display_name: "长程任务监控"
+  short_description: "仅 goal 任务或用户明确要求时上报进展，普通对话不自动上报"
+  default_prompt: "使用 $long-task-monitor 将这个长程任务的进展上报到我已配置的监控服务器。"
