@@ -21,7 +21,7 @@
    python install.py --dest "/actual/harness/skills"
    ```
 
-4. 用户提供服务器时，可以同时配置连接。密钥只从 `MONITOR_TOKEN` 环境变量读取；不要通过命令参数或聊天索要密钥。
+4. 用户先用 Owner 或管理员创建的账号登录监控网页，修改初始密码，在“我的账号 → 个人上报密钥”生成自己的密钥，也可下载 `client.env`。用户提供服务器时，可以同时配置连接。密钥只从 `MONITOR_TOKEN` 环境变量读取；不要通过命令参数或聊天索要密钥或登录密码。
 
    ```text
    python install.py --dest "/actual/harness/skills" --server https://ionthruster.xyz/monitor
@@ -35,7 +35,7 @@
 
 ```ini
 MONITOR_URL=https://自己的服务器地址/monitor
-MONITOR_TOKEN=私下取得的上报密钥
+MONITOR_TOKEN=登录后自行生成的个人上报密钥
 ```
 
 ## 运行规则
@@ -44,7 +44,7 @@ MONITOR_TOKEN=私下取得的上报密钥
 
 上报用法、心跳、暂停、完成和错误处理见 [SKILL.md](skills/long-task-monitor/SKILL.md)。`--harness` 标注真实来源，其他 harness 无需修改服务器接口。
 
-当前服务器的上报密钥也能删除任务，仅向可信使用者提供；需要用户隔离时使用各自的服务实例。
+当前服务器使用 Owner、管理员和普通用户三种账号。普通用户只能查看、上报和删除自己的任务；上报密钥仅用于上报，删除需要网页登录。密钥完整内容只在生成时显示一次，遗失可重新生成；重新生成会让旧密钥立即失效，请同步更新所有使用此账号的 harness 配置。
 
 ## 安装器验证
 

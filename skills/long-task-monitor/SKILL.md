@@ -27,6 +27,8 @@ MONITOR_TOKEN=<reporting secret>
 
 Configuration supplies the destination and credentials; it does not authorize reporting by itself. When the reporting gate permits it, send only task titles, summaries, step names, status, progress and time estimates to that configured server. If configuration is absent for an eligible task, keep doing the original task and explain how to enable monitoring once. Do not invent a server or send to an unrelated destination. Never include credentials, private file contents, source code, full prompts or tool outputs in reports. Summarize sensitive work at a high level. Keep secrets in the configuration file or environment, never CLI arguments or printed output. Remote endpoints must use HTTPS.
 
+For account-based servers, the user obtains a personal reporting key by logging into the dashboard, changing the initial password, and opening “我的账号 → 个人上报密钥”. They may download `client.env` there. Ask them to configure it privately; never ask for their login password or print their key. Keys only permit reporting tasks owned by that account, not dashboard access, account management or task deletion. Regenerating/revoking a key, disabling an account or an administrator resetting its password invalidates the previous key. HTTP 401 means authentication failed: keep doing the task and explain that the user should update their private reporting configuration. Do not fall back to shared server secrets.
+
 ## Checkpoints
 
 - At task start, choose one stable ID and send `start` with title, overview, harness and current step. Use `codex:<threadId>` when a Codex goal/thread ID is available; otherwise create a UUID once and reuse it. Concurrent tasks need separate IDs.
